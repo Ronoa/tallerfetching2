@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 const generalUrl ='https://api.github.com/users'
 export default class Fetch extends React.PureComponent {
 
@@ -13,18 +15,12 @@ export default class Fetch extends React.PureComponent {
     }
 
     _handleKeyDown(e) {
-        if(e.key==='Enter'){
-            // this.setState({
-            //     user: event.target.value
-            // }, ()=> this.getDataFromGithub())
-
+        if(e.key==='Enter'){           
           this.getDataFromGithub()
         }
     }
+    
     handlerChange(event) {
-        // this.setState({
-        //     user: event.target.value
-        // })
         this.setState({
                 user: event.target.value
             }, ()=> this.getDataFromGithub())
@@ -88,9 +84,7 @@ export default class Fetch extends React.PureComponent {
             
            
         } catch(error) {
-            console.log('error', error)
-            // this.getUserListStorage()
-            // alert('error', error);
+            console.log('error', error)            
         }
 
     }
@@ -100,13 +94,15 @@ export default class Fetch extends React.PureComponent {
         // console.log('lll', userList)
         return (
             <>
+
+            
                 <input placeholder={"Usuario"} value={user} onChange={this.handlerChange} />                
                 <ul>                   
                     {userList.map((list, l) => <li key={l}>
                     <img src={list.avatar_url} height="45"></img>
                     {list.login}
                     </li>)}
-                </ul>
+                </ul>            
             </>
         )
     }
